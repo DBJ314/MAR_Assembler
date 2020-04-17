@@ -107,15 +107,15 @@ import_magic_prefix = "import:"#special prefix to ensure it can't be defined as 
 resolved_labels = {}
 symbol_refs = []    #list of (in_text_section, offset, symbol, needs_API_decision) tuples (symbol can be label, data, or import)
 
-whitespace_re = re.compile("^\s+")
-comment_re = re.compile("^[^\";]*(\"[^\"]*\"[^\";]*)*;")
+whitespace_re = re.compile(r'^\s+')
+comment_re = re.compile(r'^[^";]*("[^"]*"[^";]*)*;')
 
-label_re = re.compile("^[a-zA-Z_]\w*:")
-dw_seperator_re = re.compile(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)")# borrowed from MAR source
-mnemonic_re = re.compile("^[a-zA-Z]+")
+label_re = re.compile(r'^[a-zA-Z_]\w*:')
+dw_seperator_re = re.compile(r',(?=(?:[^"]*"[^"]*")*[^"]*$)')# borrowed from MAR source
+mnemonic_re = re.compile(r'^[a-zA-Z]+')
 
-plus_re = re.compile("\+")
-minus_re = re.compile("-")
+plus_re = re.compile(r'\+')
+minus_re = re.compile(r'-')
 #(MEM_OR_REG, IMM, BLANK)
 s_dst = (True, False, False)
 s_src = (True, True, False)
