@@ -1,5 +1,5 @@
 ;Relative Offset API
-;Version 0.4
+;Version 0.5
 ;Author: MC68882
 
 ;This API provides a means of writing position-independent code.
@@ -223,6 +223,7 @@ _RestoreOldTable:;sets up a jump table given it's absolute address in D
     MOV [TblCorrectionVal],D;calculate the correction value
     RET
 _GetSymbol:
+    PUSHF
     ADD D,[SP]
     SUB D,2
     PUSH A
@@ -316,6 +317,7 @@ _GetSymbolReturn:
     POP C
     POP B
     POP A
+    POPF
     RET
 
 GetSymbolJumpTbl:
